@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Library Management System</title>
+    <link rel="icon" href="img/icon.png">
+    <title>Book Management System</title>
 </head>
 <body>
 <div class="container card w-35">
@@ -17,19 +18,19 @@
         <div class="form-row">
             <div class="form-group col-md-8 center">
                 <label>Book Name</label>
-                <input type="text" class="form-control" name="book-name"><br/>
+                <input type="text" class="form-control" name="book-name" required><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Author</label>
-                <input type="text" class="form-control" name="author"><br/>
+                <input type="text" class="form-control" name="author" required><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Price</label>
-                <input type="text" class="form-control" name="price"><br/>
+                <input type="text" class="form-control" name="price" required><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Page</label>
-                <input type="text" class="form-control" name="page"><br/>
+                <input type="text" class="form-control" name="page" required><br/>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="register">Register</button>

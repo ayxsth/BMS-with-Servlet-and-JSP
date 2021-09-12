@@ -11,32 +11,25 @@
     <title>Library Management System</title>
 </head>
 <body>
-<div class="header text-center">
-    <h3>Library Management System</h3>
-</div>
 <div class="container card w-35">
-    <form>
+    <center><h2>Book Management System</h2></center>
+    <form action="FormValidation" method="post">
         <div class="form-row">
             <div class="form-group col-md-8 center">
-                <label>Name</label>
-                <input type="text" class="form-control" name="name"><br/>
+                <label>Book Name</label>
+                <input type="text" class="form-control" name="book-name"><br/>
             </div>
             <div class="form-group col-md-8 center">
-                <label>Email</label>
-                <input type="email" class="form-control" name="email"><br/>
+                <label>Author</label>
+                <input type="text" class="form-control" name="author"><br/>
             </div>
             <div class="form-group col-md-8 center">
-                <label>Phone Number</label>
-                <input type="text" class="form-control" name="phone"><br/>
+                <label>Price</label>
+                <input type="text" class="form-control" name="price"><br/>
             </div>
             <div class="form-group col-md-8 center">
-                <label>Gender</label>
-                <select name="gender" class="form-control">
-                    <option selected>Choose...</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select><br/>
+                <label>Page</label>
+                <input type="text" class="form-control" name="page"><br/>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="register">Register</button>

@@ -1,3 +1,31 @@
+<%@ page import="com.code.Value" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%!
+    String error;
+    String[] value;
+%>
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
+    response.setHeader("Pragma", "no-cache");   //HTTP 1.0
+    response.setHeader("Expires", "0"); //Proxies
+
+    if(session.getAttribute("error") == null){
+        error = "";
+    } else {
+        error = String.valueOf(session.getAttribute("error"));
+    }
+
+    if(session.getAttribute("value") == null){
+        value = new String[]{"", "", "", ""};
+    } else {
+        Value v = (Value) session.getAttribute("value");
+        value[0] = v.getName();
+        value[1] = v.getAuthor();
+        value[2] = v.getPrice();
+        value[3] = v.getPage();
+    }
+%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,6 +39,7 @@
     <link rel="icon" href="img/icon.png">
     <title>Book Management System</title>
 </head>
+
 <body>
 <div class="container card w-35">
     <center><h2>Book Management System</h2></center>
@@ -18,19 +47,22 @@
         <div class="form-row">
             <div class="form-group col-md-8 center">
                 <label>Book Name</label>
-                <input type="text" class="form-control" name="book-name" required><br/>
+                <input type="text" class="form-control" name="book-name" value="<%=value[0]%>"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Author</label>
-                <input type="text" class="form-control" name="author" required><br/>
+                <input type="text" class="form-control" name="author" value="<%=value[1]%>"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Price</label>
-                <input type="text" class="form-control" name="price" required><br/>
+                <input type="text" class="form-control" name="price" value="<%=value[2]%>"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Page</label>
-                <input type="text" class="form-control" name="page" required><br/>
+                <input type="text" class="form-control" name="page" value="<%=value[3]%>"><br/>
+            </div>
+            <div>
+                <p align="center" style="color: red;"><%=error%></p>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="register">Register</button>

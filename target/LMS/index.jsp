@@ -33,14 +33,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="icon" href="img/icon.png">
     <title>Book Management System</title>
 </head>
 
 <body>
 <div class="container card w-35">
-    <center><h2>Book Management System</h2></center>
+    <h2>Book Management System</h2>
     <form action="FormValidation" method="post">
         <div class="form-row">
             <div class="form-group col-md-8 center">
@@ -59,8 +59,8 @@
                 <label>Page</label>
                 <input type="text" class="form-control" name="page" value="<%=book[3]%>"><br/>
             </div>
-            <div>
-                <p align="center" style="color: red;"><%=error%></p>
+            <div class="error">
+                <p><%=error%></p>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="register">Register</button>

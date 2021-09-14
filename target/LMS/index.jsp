@@ -1,31 +1,29 @@
-<%@ page import="com.code.Value" %>
+<%@ page import="com.code.Book" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%!
     String error;
-    String[] value;
+    String[] book;
 %>
-<%
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //HTTP 1.1
-    response.setHeader("Pragma", "no-cache");   //HTTP 1.0
-    response.setHeader("Expires", "0"); //Proxies
 
+<%
     if(session.getAttribute("error") == null){
         error = "";
     } else {
         error = String.valueOf(session.getAttribute("error"));
     }
 
-    if(session.getAttribute("value") == null){
-        value = new String[]{"", "", "", ""};
+    if(session.getAttribute("book") == null){
+        book = new String[]{"", "", "", ""};
     } else {
-        Value v = (Value) session.getAttribute("value");
-        value[0] = v.getName();
-        value[1] = v.getAuthor();
-        value[2] = v.getPrice();
-        value[3] = v.getPage();
+        Book b = (Book) session.getAttribute("book");
+        book[0] = b.getName();
+        book[1] = b.getAuthor();
+        book[2] = b.getPrice();
+        book[3] = b.getPage();
     }
 %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -47,19 +45,19 @@
         <div class="form-row">
             <div class="form-group col-md-8 center">
                 <label>Book Name</label>
-                <input type="text" class="form-control" name="book-name" value="<%=value[0]%>"><br/>
+                <input type="text" class="form-control" name="book-name" value="<%=book[0]%>"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Author</label>
-                <input type="text" class="form-control" name="author" value="<%=value[1]%>"><br/>
+                <input type="text" class="form-control" name="author" value="<%=book[1]%>"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Price</label>
-                <input type="text" class="form-control" name="price" value="<%=value[2]%>"><br/>
+                <input type="text" class="form-control" name="price" value="<%=book[2]%>"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Page</label>
-                <input type="text" class="form-control" name="page" value="<%=value[3]%>"><br/>
+                <input type="text" class="form-control" name="page" value="<%=book[3]%>"><br/>
             </div>
             <div>
                 <p align="center" style="color: red;"><%=error%></p>

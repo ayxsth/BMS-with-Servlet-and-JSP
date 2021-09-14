@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -13,7 +16,7 @@
 </head>
 <body>
 <div class="container card w-35">
-    <center><h2>Records!</h2></center>
+    <center><h2>Book Records</h2></center>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -22,16 +25,22 @@
             <th scope="col">Author</th>
             <th scope="col">Price</th>
             <th scope="col">Page</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-        <%%>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
+        <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/servlet" user="root" password=""/>
+        <sql:query var="rs" dataSource="${db}">SELECT * FROM book</sql:query>
+        <c:forEach items="${rs.rows}" var="book">
+            <tr>
+                <th scope="row"><c:out value="${book.book_id}"></c:out></th>
+                <td><c:out value="${book.book_name}"></c:out></td>
+                <td><c:out value="${book.author}"></c:out></td>
+                <td><c:out value="${book.price}"></c:out></td>
+                <td><c:out value="${book.page}"></c:out></td>
+                <td><c:out value=""></c:out></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

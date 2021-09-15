@@ -1,7 +1,7 @@
 package com.code;
 
 public class Book {
-    private String name, author, price, page;
+    private String name, author, price, page, id;
 
     public String getName() {
         return name;
@@ -35,11 +35,31 @@ public class Book {
         this.page = page;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Book(String name, String author, String price, String page) {
         this.name = name;
         this.author = author;
         this.price = price;
         this.page = page;
+    }
+
+    public Book(String id, String name, String author, String price, String page) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.page = page;
+        this.id = id;
+    }
+
+    public Book(){
+
     }
 
     @Override

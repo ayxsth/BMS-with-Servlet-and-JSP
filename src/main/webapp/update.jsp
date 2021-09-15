@@ -7,15 +7,24 @@
                    password=""/>
 
 <c:choose>
-    <c:when test="${param.id==null}">
-        <c:redirect url="records.jsp"/>
-    </c:when>
-    <c:otherwise>
+    <c:when test="${book.getId()==null && param.id!=null}">
         <sql:query var="rs" dataSource="${db}">SELECT * FROM book WHERE book_id=${param.id}</sql:query>
         <c:if test="${rs.rowCount<=0}">
             <c:redirect url="records.jsp"/>
         </c:if>
-    </c:otherwise>
+        <c:forEach items="${rs.rows}" var="b">
+            <jsp:useBean id="book" class="com.code.Book" scope="session">
+            </jsp:useBean>
+            <jsp:setProperty property="id" name="book" value="${b.book_id}"></jsp:setProperty>
+            <jsp:setProperty property="name" name="book" value="${b.book_name}"></jsp:setProperty>
+            <jsp:setProperty property="author" name="book" value="${b.author}"></jsp:setProperty>
+            <jsp:setProperty property="price" name="book" value="${b.price}"></jsp:setProperty>
+            <jsp:setProperty property="page" name="book" value="${b.page}"></jsp:setProperty>
+        </c:forEach>
+    </c:when>
+    <c:when test="${book.getId()==null && param.id==null}">
+        <c:redirect url="records.jsp"/>
+    </c:when>
 </c:choose>
 
 <html>
@@ -36,31 +45,37 @@
 
 <div class="container card w-35">
     <h2>Update Records</h2>
-    <c:forEach items="${rs.rows}" var="bookDetails">
-        <form action="FormValidation" method="post">
-            <div class="form-row">
-                <div class="form-group col-md-8 center">
-                    <label>Book Name</label>
-                    <input type="text" class="form-control" name="book-name" value="${bookDetails.book_name}"><br/>
-                </div>
-                <div class="form-group col-md-8 center">
-                    <label>Author</label>
-                    <input type="text" class="form-control" name="author" value="${bookDetails.author}"><br/>
-                </div>
-                <div class="form-group col-md-8 center">
-                    <label>Price</label>
-                    <input type="text" class="form-control" name="price" value="${bookDetails.price}"><br/>
-                </div>
-                <div class="form-group col-md-8 center">
-                    <label>Page</label>
-                    <input type="text" class="form-control" name="page" value="${bookDetails.page}"><br/>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary" name="register">Update</button>
-                </div>
+    <form action="FormValidation" method="post">
+        <input type="hidden" name="id" value="${book.getId()}">
+        <div class="form-row">
+            <div class="form-group col-md-8 center">
+                <label>Book Name</label>
+                <input type="text" class="form-control" name="book-name" value="${book.getName()}"><br/>
             </div>
-        </form>
-    </c:forEach>
+            <div class="form-group col-md-8 center">
+                <label>Author</label>
+                <input type="text" class="form-control" name="author" value="${book.getAuthor()}"><br/>
+            </div>
+            <div class="form-group col-md-8 center">
+                <label>Price</label>
+                <input type="text" class="form-control" name="price" value="${book.getPrice()}"><br/>
+            </div>
+            <div class="form-group col-md-8 center">
+                <label>Page</label>
+                <input type="text" class="form-control" name="page" value="${book.getPage()}"><br/>
+            </div>
+            <div class="error">
+                <p>${error}</p>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" name="register">Update</button>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
+<%
+    session.removeAttribute("book");
+    session.invalidate();
+%>

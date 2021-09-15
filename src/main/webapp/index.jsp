@@ -1,5 +1,6 @@
 <%@ page import="com.code.Book" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 
 <%!
     String error;
@@ -60,7 +61,7 @@
                 <input type="text" class="form-control" name="page" value="<%=book[3]%>"><br/>
             </div>
             <div class="error">
-                <p><%=error%></p>
+                <p>${error}</p>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="register">Register</button>

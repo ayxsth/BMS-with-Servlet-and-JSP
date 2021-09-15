@@ -11,4 +11,8 @@ public class AddEditBook {
         return con.insert(book);
     }
 
+    public int update(Book book) throws SQLException {
+        return con.update(book);
+    }
+
 }

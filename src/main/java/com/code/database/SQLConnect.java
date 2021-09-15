@@ -28,7 +28,7 @@ public class SQLConnect {
         ps.setString(2, book.getAuthor());
         ps.setInt(3, Integer.parseInt(book.getPrice()));
         ps.setInt(4, Integer.parseInt(book.getPage()));
-
+        connect().close();
         return ps.executeUpdate();
     }
 

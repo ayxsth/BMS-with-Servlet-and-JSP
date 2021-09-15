@@ -36,6 +36,12 @@ body{
     text-align: center;
 }
 
+.no-data{
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .btn{
     background: #6990F2;
     border: none;

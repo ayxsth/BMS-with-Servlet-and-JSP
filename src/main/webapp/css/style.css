@@ -36,14 +36,20 @@ body{
     text-align: center;
 }
 
-.container button{
+.btn{
     background: #6990F2;
     border: none;
 }
 
-.container button:hover{
+.btn:hover{
     background: #5372F0;
     border: none;
+}
+
+.btn-secondary{
+    background-color: #fff;
+    border: 1px solid #6990F2;
+    color: #6990F2;
 }
 
 .error{

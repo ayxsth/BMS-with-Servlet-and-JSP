@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ page isELIgnored="false" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -15,6 +16,16 @@
     <title>Book Management System</title>
 </head>
 <body>
+
+<sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/servlet" user="root" password=""/>
+
+<c:if test="${param.id != null}">
+    <sql:update var="count" dataSource="${db}">DELETE FROM book WHERE book_id=${param.id}</sql:update>
+    <c:if test="${count>0}">
+        <c:redirect url="records.jsp"/>
+    </c:if>
+</c:if>
+
 <div class="container card w-35">
     <center><h2>Book Records</h2></center>
     <table class="table table-bordered">
@@ -29,7 +40,6 @@
         </tr>
         </thead>
         <tbody>
-        <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver" url="jdbc:mysql://localhost/servlet" user="root" password=""/>
         <sql:query var="rs" dataSource="${db}">SELECT * FROM book</sql:query>
         <c:forEach items="${rs.rows}" var="book">
             <tr>
@@ -38,7 +48,10 @@
                 <td><c:out value="${book.author}"></c:out></td>
                 <td><c:out value="${book.price}"></c:out></td>
                 <td><c:out value="${book.page}"></c:out></td>
-                <td><c:out value=""></c:out></td>
+                <td>
+                    <a href="./update.jsp?id=${book.book_id}" class="btn btn-primary">Update</a>
+                    <a href="./records.jsp?id=${book.book_id}" class="btn btn-secondary">Delete</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

@@ -17,10 +17,9 @@ public class FormValidation extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String name = request.getParameter("book-name");
         String author = request.getParameter("author");
-        String price = String.valueOf(request.getParameter("price"));
-        String page = String.valueOf(request.getParameter("page"));
-        String id = String.valueOf(request.getParameter("id"));
-        System.out.println(id);
+        String price = request.getParameter("price");
+        String page = request.getParameter("page");
+        String id = request.getParameter("id");
         HttpSession session = request.getSession();
         Book book;
 
@@ -47,8 +46,7 @@ public class FormValidation extends HttpServlet {
                 session.setAttribute("error", error);
                 response.sendRedirect("index.jsp");
             }
-        } else if (id != null) {
-            System.out.println(id);
+        } else {
             book = new Book(id, name, author, price, page);
             if(id !="" && name != "" && author != "" && price != "" && page != ""){
                 session.removeAttribute("book");

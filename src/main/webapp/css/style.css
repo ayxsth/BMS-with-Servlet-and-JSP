@@ -39,25 +39,36 @@ body{
 .btn{
     background: #6990F2;
     border: none;
+    border: 1px solid #6990F2;
 }
 
 .btn:hover{
     background: #5372F0;
     border: none;
+    border: 1px solid #5372F0;
 }
 
 .btn-secondary{
     background-color: #fff;
-    border: 1px solid #6990F2;
-    color: #6990F2;
+    border: 1px solid #f03434;
+    color: #f03434;
+}
+
+.btn-secondary:hover{
+    background-color: #f03434;
+    border: 1px solid #f03434;
 }
 
 .error{
-    color: red;
+    color: #f03434;
     text-align: center;
 }
 
 .table{
     width: 90%;
     margin: 0 auto;
+}
+
+.action{
+    text-align: center;
 }

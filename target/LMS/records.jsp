@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link rel="icon" href="img/icon.png">
     <title>Book Management System</title>
@@ -27,7 +28,7 @@
 </c:if>
 
 <div class="container card w-35">
-    <center><h2>Book Records</h2></center>
+    <h2>Book Records</h2>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -48,9 +49,9 @@
                 <td><c:out value="${book.author}"></c:out></td>
                 <td><c:out value="${book.price}"></c:out></td>
                 <td><c:out value="${book.page}"></c:out></td>
-                <td>
-                    <a href="./update.jsp?id=${book.book_id}" class="btn btn-primary">Update</a>
-                    <a href="./records.jsp?id=${book.book_id}" class="btn btn-secondary">Delete</a>
+                <td class="action">
+                    <a href="./update.jsp?id=${book.book_id}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
+                    <a href="./records.jsp?id=${book.book_id}" class="btn btn-secondary btn-sm"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
         </c:forEach>

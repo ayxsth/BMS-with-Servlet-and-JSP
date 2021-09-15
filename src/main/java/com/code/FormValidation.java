@@ -27,15 +27,15 @@ public class FormValidation extends HttpServlet {
             session.removeAttribute("value");
             session.getAttribute("error");
             session.invalidate();
-            SQLConnect con = new SQLConnect();
+            AddEditBook addEditBook = new AddEditBook();
             try {
-                if(con.insert(book)>0){
+                if(addEditBook.save(book)>0){
                     System.out.println("Added!");
                     response.sendRedirect("records.jsp");
                 } else {
                     System.out.println("Failed!");
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {

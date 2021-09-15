@@ -35,19 +35,19 @@
     <sql:query var="rs" dataSource="${db}">SELECT * FROM book</sql:query>
     <c:choose>
         <c:when test="${rs.rowCount>0}">
-            <c:forEach items="${rs.rows}" var="book">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Book Name</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Page</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Book Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Page</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${rs.rows}" var="book">
                     <tr>
                         <th scope="row"><c:out value="${book.book_id}"></c:out></th>
                         <td><c:out value="${book.book_name}"></c:out></td>
@@ -61,9 +61,9 @@
                                     class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                    </tbody>
-                </table>
-            </c:forEach>
+                </c:forEach>
+                </tbody>
+            </table>
         </c:when>
         <c:otherwise>
             <h3 class="no-data">No data found!</h3>

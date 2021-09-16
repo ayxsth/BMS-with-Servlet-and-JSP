@@ -1,29 +1,5 @@
-<%@ page import="com.code.Book" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
-
-<%!
-    String error;
-    String[] book;
-%>
-
-<%
-    if(session.getAttribute("error") == null){
-        error = "";
-    } else {
-        error = String.valueOf(session.getAttribute("error"));
-    }
-
-    if(session.getAttribute("book") == null){
-        book = new String[]{"", "", "", ""};
-    } else {
-        Book b = (Book) session.getAttribute("book");
-        book[0] = b.getName();
-        book[1] = b.getAuthor();
-        book[2] = b.getPrice();
-        book[3] = b.getPage();
-    }
-%>
 
 <!doctype html>
 <html lang="en">
@@ -46,19 +22,19 @@
         <div class="form-row">
             <div class="form-group col-md-8 center">
                 <label>Book Name</label>
-                <input type="text" class="form-control" name="book-name" value="<%=book[0]%>"><br/>
+                <input type="text" class="form-control" name="book-name" value="${book.getName()}"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Author</label>
-                <input type="text" class="form-control" name="author" value="<%=book[1]%>"><br/>
+                <input type="text" class="form-control" name="author" value="${book.getAuthor()}"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Price</label>
-                <input type="text" class="form-control" name="price" value="<%=book[2]%>"><br/>
+                <input type="text" class="form-control" name="price" value="${book.getPrice()}"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Page</label>
-                <input type="text" class="form-control" name="page" value="<%=book[3]%>"><br/>
+                <input type="text" class="form-control" name="page" value="${book.getPage()}"><br/>
             </div>
             <div class="error">
                 <p>${error}</p>
@@ -71,3 +47,7 @@
 </div>
 </body>
 </html>
+<%
+    session.removeAttribute("error");
+    session.invalidate();
+%>

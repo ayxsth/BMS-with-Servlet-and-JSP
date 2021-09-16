@@ -1,14 +1,11 @@
 package com.code;
-import com.code.database.SQLConnect;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "formValidation", urlPatterns = "/FormValidation")
 public class FormValidation extends HttpServlet {
@@ -27,7 +24,7 @@ public class FormValidation extends HttpServlet {
             book = new Book(name, author, price, page);
             if(name != "" && author != "" && price != "" && page != ""){
                 session.removeAttribute("book");
-                session.getAttribute("error");
+                session.removeAttribute("error");
                 session.invalidate();
                 AddEditBook addEditBook = new AddEditBook();
                 try {
@@ -50,7 +47,7 @@ public class FormValidation extends HttpServlet {
             book = new Book(id, name, author, price, page);
             if(id !="" && name != "" && author != "" && price != "" && page != ""){
                 session.removeAttribute("book");
-                session.getAttribute("error");
+                session.removeAttribute("error");
                 session.invalidate();
                 AddEditBook addEditBook = new AddEditBook();
                 try {

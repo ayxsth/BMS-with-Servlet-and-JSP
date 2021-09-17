@@ -1,6 +1,6 @@
 # Book Management System
 
-Book Management System is a small project created using Servlet and JSP. The **concepts** used in this project is **not the best** but I tried to **utilize** all the **concepts and ways of solving a problem** that I have **learned** in Servlet and JSP. *(Few of them are still missing)*
+Book Management System is a small project created using Servlet and JSP. The **concepts** used in this project is **not the best** but I tried to **utilize** as many **concepts and learnings** as I could.
 
 ## Screenshot
 

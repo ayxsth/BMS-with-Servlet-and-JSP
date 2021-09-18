@@ -22,19 +22,19 @@
         <div class="form-row">
             <div class="form-group col-md-8 center">
                 <label>Book Name</label>
-                <input type="text" class="form-control" name="book-name" value="${book.getName()}"><br/>
+                <input type="text" class="form-control" name="book-name" placeholder="Half Girlfriend" value="${book.getName()}"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Author</label>
-                <input type="text" class="form-control" name="author" value="${book.getAuthor()}"><br/>
+                <input type="text" class="form-control" name="author" placeholder="Chetan Bhagat" value="${book.getAuthor()}"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Price</label>
-                <input type="text" class="form-control" name="price" value="${book.getPrice()}"><br/>
+                <input type="text" class="form-control" name="price" placeholder="750" value="${book.getPrice()}"><br/>
             </div>
             <div class="form-group col-md-8 center">
                 <label>Page</label>
-                <input type="text" class="form-control" name="page" value="${book.getPage()}"><br/>
+                <input type="text" class="form-control" name="page" placeholder="1000" value="${book.getPage()}"><br/>
             </div>
             <div class="error">
                 <p>${error}</p>

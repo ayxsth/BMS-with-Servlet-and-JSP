@@ -24,10 +24,10 @@ public class SQLConnect {
                 "VALUES (?,?,?,?)";
 
         PreparedStatement ps = connect().prepareStatement(INSERT_QUERY);
-        ps.setString(1, book.getName());
-        ps.setString(2, book.getAuthor());
-        ps.setInt(3, Integer.parseInt(book.getPrice()));
-        ps.setInt(4, Integer.parseInt(book.getPage()));
+        ps.setString(1, book.getName().trim());
+        ps.setString(2, book.getAuthor().trim());
+        ps.setInt(3, Integer.parseInt(book.getPrice().trim()));
+        ps.setInt(4, Integer.parseInt(book.getPage().trim()));
         connect().close();
         return ps.executeUpdate();
     }
@@ -37,11 +37,11 @@ public class SQLConnect {
                 "WHERE book_id=?";
 
         PreparedStatement ps = connect().prepareStatement(INSERT_QUERY);
-        ps.setString(1, book.getName());
-        ps.setString(2, book.getAuthor());
-        ps.setInt(3, Integer.parseInt(book.getPrice()));
-        ps.setInt(4, Integer.parseInt(book.getPage()));
-        ps.setInt(5, Integer.parseInt(book.getId()));
+        ps.setString(1, book.getName().trim());
+        ps.setString(2, book.getAuthor().trim());
+        ps.setInt(3, Integer.parseInt(book.getPrice().trim()));
+        ps.setInt(4, Integer.parseInt(book.getPage().trim()));
+        ps.setInt(5, Integer.parseInt(book.getId().trim()));
         connect().close();
         return ps.executeUpdate();
     }
